@@ -69,6 +69,7 @@ Example notebook (credit (https://github.com/09rohanchopra/cifar10/blob/master/c
                  'truck']
 =========================================================================
 ```
+<\details>
 
 <details>
     <summary>Aligned output (called with `-a` argument):</summary>
@@ -120,6 +121,7 @@ Decoding file: data/batches.meta
  'truck']
 =========================================================================
 ```
+<\details>
 
 
 ## Uninstall
@@ -132,4 +134,4 @@ Distributed uder the [Boost Software License](http://www.boost.org/users/license
 
 ## Acknoledgement
 
-jcat parse notebook with [jsoncons](https://github.com/danielaparker/jsoncons), a header only json library.
+jcat parse notebook with [jsoncons](https://github.com/danielaparker/jsoncons), a header only c++ json library.
