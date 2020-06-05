@@ -1,3 +1,0 @@
-[submodule "third_party/jsoncons"]
-	path = third_party/jsoncons
-	url = https://github.com/danielaparker/jsoncons.git
