@@ -32,8 +32,6 @@ Example notebook (credit https://github.com/09rohanchopra/cifar10/blob/master/ci
 
 
 Running with `jcat examples/example-cifar10.ipynb`:
-<details>
-    <summary>Output (click to expand)</summary>
 
 ```
                 =========================================================================
@@ -72,7 +70,6 @@ Running with `jcat examples/example-cifar10.ipynb`:
                  'truck']
 =========================================================================
 ```
-</details>
 
 Running with `jcat examples/example-cifar10.ipynb -a`:
 <details>
