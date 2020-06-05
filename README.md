@@ -71,7 +71,7 @@ Example notebook (credit (https://github.com/09rohanchopra/cifar10/blob/master/c
 ```
 
 <details>
-    <summary>Aligned output:</summary>
+    <summary>Aligned output (called with `-a` argument):</summary>
 
 ```
 =========================================================================
@@ -120,6 +120,7 @@ Decoding file: data/batches.meta
  'truck']
 =========================================================================
 ```
+
 
 ## Uninstall
 
