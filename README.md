@@ -135,5 +135,5 @@ Distributed uder the [Boost Software License](http://www.boost.org/users/license
 
 ## Acknoledgement
 
-jcat parse notebook with [jsoncons](https://github.com/danielaparker/jsoncons), a header only c++ json library.
+jcat parse notebook with [jsoncons](https://github.com/danielaparker/jsoncons), a header only c++ json library.  
 Example notebook from: https://github.com/09rohanchopra/cifar10/blob/master/cifar10-basic.ipynb
