@@ -31,7 +31,7 @@ Example notebook
 ![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
 
 
-Running with `jcat examples/example-cifar10.ipynb`:
+* Running with `jcat examples/example-cifar10.ipynb`:
 
 ```
                 =========================================================================
@@ -71,7 +71,7 @@ Running with `jcat examples/example-cifar10.ipynb`:
 =========================================================================
 ```
 
-Running with `jcat examples/example-cifar10.ipynb -a`:
+* Running with `jcat examples/example-cifar10.ipynb -a`:
 <details>
     <summary> Output (click to expand)</summary>
 
