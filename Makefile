@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 
 jcat: main.cpp
-	g++ -o jcat main.cpp -Wall -std=c++11 -I./third_party/jsoncons/include
+	g++ -o jcat main.cpp -Wall -std=c++11 -I./include
 
 all: jcat
 
