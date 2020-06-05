@@ -27,7 +27,7 @@ OPTION:
   -a:	Align prompt (In/Out) for copy.
 ```
 
-Example notebook (credit https://github.com/09rohanchopra/cifar10/blob/master/cifar10-basic.ipynb):
+Example notebook
 ![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
 
 
@@ -136,3 +136,4 @@ Distributed uder the [Boost Software License](http://www.boost.org/users/license
 ## Acknoledgement
 
 jcat parse notebook with [jsoncons](https://github.com/danielaparker/jsoncons), a header only c++ json library.
+Example notebook from: https://github.com/09rohanchopra/cifar10/blob/master/cifar10-basic.ipynb
