@@ -14,7 +14,8 @@ cd jcat
 make
 sudo make install
 ```
-Optionally, one could use `./jcat` without runing `sudo make install`; or change `$PREFIX` environment variable for alternative installation directory (by default is `/usr/local/bin`).
+Optionally, one could use `./jcat` without runing `sudo make install`;  
+or use `make install PREFIX=/path/to/install` for alternative installation directory (by default is `/usr/local/bin`).
 
 ## Usage
 
@@ -127,7 +128,7 @@ Decoding file: data/batches.meta
 
 ## Uninstall
 
-`rm /usr/local/bin/jcat`, if installed with default `$PREFIX`.
+`rm /usr/local/bin/jcat`, if no extra `$PREFIX` is supplied during installation.
 
 ## License
 
