@@ -14,7 +14,7 @@ cd jcat
 make
 sudo make install
 ```
-Optionally, one could use `./jcat` without runing `sudo make install`; or change $PREFIX environment variable for another directory(by default is `/usr/local/bin`).
+Optionally, one could use `./jcat` without runing `sudo make install`; or change `$PREFIX` environment variable for alternative installation directory (by default is `/usr/local/bin`).
 
 ## Usage
 
@@ -31,8 +31,9 @@ Example notebook (credit https://github.com/09rohanchopra/cifar10/blob/master/ci
 ![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
 
 
+`jcat examples/example-cifar10.ipynb`
 <details>
-    <summary>`jcat examples/example-cifar10.ipynb` output (click to expand)</summary>
+    <summary>Output (click to expand)</summary>
 
 ```
                 =========================================================================
@@ -73,8 +74,9 @@ Example notebook (credit https://github.com/09rohanchopra/cifar10/blob/master/ci
 ```
 </details>
 
+`jcat examples/example-cifar10.ipynb -a`
 <details>
-    <summary>`jcat examples/example-cifar10.ipynb -a` output (click to expand):</summary>
+    <summary> Output (click to expand)</summary>
 
 ```
 =========================================================================
@@ -128,7 +130,7 @@ Decoding file: data/batches.meta
 
 ## Uninstall
 
-`rm /usr/local/bin/jcat`, if installed with default $PREFIX.
+`rm /usr/local/bin/jcat`, if installed with default `$PREFIX`.
 
 ## License
 
