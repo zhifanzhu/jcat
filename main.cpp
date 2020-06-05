@@ -8,11 +8,9 @@
 #include <jsoncons/json.hpp>
 #include <jsoncons_ext/jsonpath/jsonpath.hpp>
 
-/*
-TODO
-*/
-
 const int PAD = 16;
+
+const std::string COMMENT = "# ";
 
 class Jcat {
 public:
@@ -20,17 +18,17 @@ public:
      * @params:
      *  notebook : A parsed json of notebook content
      *  str      : Stream object, e.g. std::cout
-     *  no_prompt: Whether dipaly `prompt` or raw content
-     *  pad_witdh: Padding width for prompt
+     *  align    : Align prompt for copy
+     *  pad_witdh: Padding width for prompt, when align == false
      *
      */
     Jcat(jsoncons::json const &notebook, 
          std::ostream &str, 
-         bool no_prompt,
+         bool align,
          int pad_width) : 
-        root(notebook), str(str), pad_width(pad_width), noprompt(no_prompt)
+        root(notebook), str(str), pad_width(pad_width), align(align)
     {
-        padding = no_prompt ? "" : std::string(pad_width, ' ');
+        padding = align ? "" : std::string(pad_width, ' ');
     }
 
     void display() {
@@ -50,7 +48,7 @@ private:
     const jsoncons::json &root;
     std::ostream &str;
     const int pad_width;
-    bool noprompt;
+    bool align;
     std::string padding;
 
     bool is_python(jsoncons::json const &j) {
@@ -111,10 +109,12 @@ private:
     }
 
     void show_header(std::string hdr) {
-        if (noprompt) return;
         hdr = "`" + hdr + "`";
         int left = (pad_width - hdr.size()) / 2;
-        str << pad_n(left) << hdr << pad_n(pad_width - left - hdr.size());
+        if (align)
+            str << COMMENT << hdr << std::endl;
+        else
+            str << pad_n(left) << hdr << pad_n(pad_width - left - hdr.size());
     }
 
     void show_splitline() {
@@ -130,17 +130,21 @@ private:
     }
 
     void show_input_count(jsoncons::json j) {
-        if (noprompt) return;
         std::string num_str = j.is_null() ? " " : std::to_string(j.as<int>());
         std::string out = "In [" + num_str + "]: ";
-        str << pad_n(pad_width - out.size()) << out;
+        if (align)
+            str << COMMENT << out << std::endl;
+        else
+            str << pad_n(pad_width - out.size()) << out;
     }
 
     void show_output_count(jsoncons::json j) {
-        if (noprompt) return;
         std::string num_str = std::to_string(j.as<int>());
         std::string out = "Out[" + num_str + "]: ";
-        str << pad_n(pad_width - out.size()) << out;
+        if (align)
+            str << COMMENT << out << std::endl;
+        else
+            str << pad_n(pad_width - out.size()) << out;
     }
 
     void show_textplain(jsoncons::json texts, bool pad_flag) {
@@ -166,7 +170,7 @@ void display_usage_and_exit(bool normal = false) {
         << "Usage: jcat FILE [OPTION]\n\n"
         << "FILE:\tA json parsable notebook file (*.ipynb).\n\n"
         << "OPTION:\n"
-        << "  -r:\tRaw output (without In/Out prompt)\n";
+        << "  -a:\tAlign prompt (In/Out) for copy.\n";
 
     if (normal) exit(EXIT_SUCCESS);
     else exit(EXIT_FAILURE);
@@ -179,7 +183,7 @@ int main(int argc, char *argv[]) {
         no_prompt = false;
         fname = std::string(argv[1]);
     } else if (argc == 3) {
-        if (std::string(argv[2]) != "-r")
+        if (std::string(argv[2]) != "-a")
             display_usage_and_exit();
         no_prompt = true;
         fname = std::string(argv[1]);
@@ -189,7 +193,7 @@ int main(int argc, char *argv[]) {
     std::ifstream ifs(fname, std::ios::in);
     if (!ifs.good()) {
         std::cerr << fname << " does not exists." << std::endl;
-        exit(EXIT_FAILURE);
+        display_usage_and_exit();
     }
     std::stringstream buf;
     buf << ifs.rdbuf(); // content available as buf.str()
