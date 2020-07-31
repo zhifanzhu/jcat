@@ -4,7 +4,7 @@ jcat is a self-contained command line tool for viewing jupyter notebook files in
 
 ## Prerequisites
 
-Most system with `g++` and `make` installed should be fine.
+Most systems with `g++` and `make` installed should be fine.
 
 ## Build and Install
 
@@ -28,7 +28,7 @@ OPTION:
   -a:	Align prompt (In/Out) for copy.
 ```
 
-Example notebook
+### Example notebook
 ![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
 
 
@@ -124,6 +124,16 @@ Decoding file: data/batches.meta
 =========================================================================
 ```
 </details>
+
+### Use jcat with grep to get rid of annoying image datas
+
+* output of `cat`:
+
+![grep_cat](https://user-images.githubusercontent.com/23008175/89075159-2237ab80-d3b0-11ea-8872-d3361705833c.png)
+
+* output of `jcat':
+
+![grep_jcat](https://user-images.githubusercontent.com/23008175/89075189-34b1e500-d3b0-11ea-8fcd-6289cae6da17.png)
 
 
 ## Uninstall
