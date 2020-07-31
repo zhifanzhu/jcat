@@ -21,7 +21,7 @@ public:
      * @params:
      *  notebook : A parsed json of notebook content
      *  str      : Stream object, e.g. std::cout
-     *  align    : Align prompt for copy
+     *  align    : Align prompt for copy. (e.g. IN [...], OUT [...])
      *  pad_witdh: Padding width for prompt, when align == false
      *
      */
@@ -34,17 +34,18 @@ public:
         padding = align ? "" : std::string(pad_width, ' ');
     }
 
-    void display() {
-        if (!is_python(root)) {
-            std::cerr << "Support for python only, exit.";
-            return;
-        }
+    // Returns -1 on error.
+    // Returns 0 in normal.
+    int display() {
+        if (!is_python(root))
+            return -1;
 
         show_splitline();
         for (const auto& cell : root["cells"].array_range()) {
             display_cell(cell);
             show_splitline();
         }
+        return 0;
     }
 
 private:
@@ -66,6 +67,7 @@ private:
 
     static inline std::string pad_n(int n) { return std::string(n, ' '); }
 
+    // Main body
     void display_cell(jsoncons::json const &cell) {
         bool pad_flag = false;
 
@@ -132,6 +134,7 @@ private:
             "---------------------------------" << std::endl;
     }
 
+    // Display `In [...]`
     void show_input_count(jsoncons::json j) {
         std::string num_str = j.is_null() ? " " : std::to_string(j.as<int>());
         std::string out = "In [" + num_str + "]: ";
@@ -141,6 +144,7 @@ private:
             str << pad_n(pad_width - out.size()) << out;
     }
 
+    // Display `Out [...]`
     void show_output_count(jsoncons::json j) {
         std::string num_str = std::to_string(j.as<int>());
         std::string out = "Out[" + num_str + "]: ";
@@ -150,6 +154,7 @@ private:
             str << pad_n(pad_width - out.size()) << out;
     }
 
+    // Display texts/codes
     void show_textplain(jsoncons::json texts, bool pad_flag) {
         for (auto const &text : texts.array_range()) {
             if (pad_flag) str << padding;
@@ -158,6 +163,7 @@ private:
         }
     }
 
+    // Display discard message on unsupport data, e.g. images
     void show_discard(jsoncons::json j) {
         jsoncons::json text = j.at_or_null("data").at_or_null("text/plain");
         if (text.is_null())
@@ -181,17 +187,17 @@ void display_usage_and_exit(bool normal = false) {
 
 int main(int argc, char *argv[]) {
     std::string fname;
-    bool no_prompt;
+    bool align_promp = false;
     if (argc == 2) {
-        no_prompt = false;
-        fname = std::string(argv[1]);
+        ;
     } else if (argc == 3) {
         if (std::string(argv[2]) != "-a")
             display_usage_and_exit();
-        no_prompt = true;
-        fname = std::string(argv[1]);
+        align_promp = true;
     } else
         display_usage_and_exit();
+
+    fname = std::string(argv[1]);
 
     std::ifstream ifs(fname, std::ios::in);
     if (!ifs.good()) {
@@ -210,8 +216,12 @@ int main(int argc, char *argv[]) {
             exit(EXIT_FAILURE);
         }
     }();
-    Jcat jcat_obj(nb, std::cout, no_prompt, PAD);
-    jcat_obj.display();
+    Jcat jcat_obj(nb, std::cout, align_promp, PAD);
+    if (jcat_obj.display() < 0)
+        std::cerr 
+            << fname 
+            << ": Support python only, exit." 
+            << std::endl;
 
     ifs.close();
     return 0;
