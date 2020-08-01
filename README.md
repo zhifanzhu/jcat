@@ -8,7 +8,14 @@ Most systems with `g++` and `make` installed should be fine.
 
 ## Build and Install
 
-Clone this repo, then
+Clone this repo, if you want to be able to easily uninstall jcat use `checkinstall`.
+```
+sudo apt install checkinstall
+cd jcat
+sudo checkinstall
+
+```
+Otherwise, you can use `make` to install.
 ```
 cd jcat
 make
