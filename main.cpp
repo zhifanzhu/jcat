@@ -37,9 +37,6 @@ public:
     // Returns -1 on error.
     // Returns 0 in normal.
     int display() {
-        if (!is_python(root))
-            return -1;
-
         show_splitline();
         for (const auto& cell : root["cells"].array_range()) {
             display_cell(cell);
@@ -55,15 +52,15 @@ private:
     bool align;
     std::string padding;
 
-    bool is_python(jsoncons::json const &j) {
-        const auto &j2 = j.at_or_null(
-                "metadata").at_or_null(
-                    "kernelspec").at_or_null(
-                        "language");
-        if (j2.is_null()) return false;
-        if (j2.as<std::string>() == "python") return true;
-        else return false;
-    }
+    /* bool is_python(jsoncons::json const &j) { */
+    /*     const auto &j2 = j.at_or_null( */
+    /*             "metadata").at_or_null( */
+    /*                 "kernelspec").at_or_null( */
+    /*                     "language"); */
+    /*     if (j2.is_null()) return false; */
+    /*     if (j2.as<std::string>() == "python") return true; */
+    /*     else return false; */
+    /* } */
 
     static inline std::string pad_n(int n) { return std::string(n, ' '); }
 
@@ -220,7 +217,7 @@ int main(int argc, char *argv[]) {
     if (jcat_obj.display() < 0)
         std::cerr 
             << fname 
-            << ": Support python only, exit." 
+            << ": Some errors have occurred, exit." 
             << std::endl;
 
     ifs.close();
