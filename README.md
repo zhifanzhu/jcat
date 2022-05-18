@@ -2,39 +2,6 @@
 
 jcat is a self-contained command line tool for viewing jupyter notebook files in terminal. It parses notebook's underlying json content, hence it runs *without the dependency of jupyter/ipython core*.
 
-## Prerequisites
-
-Most systems with `g++` and `make` installed should be fine.
-
-## Build and Install
-
-Clone this repo, if you want to be able to easily uninstall jcat use `checkinstall`.
-```
-sudo apt install checkinstall
-cd jcat
-sudo checkinstall
-
-```
-Otherwise, you can use `make` to install.
-```
-cd jcat
-make
-sudo make install
-```
-Optionally, one could use `./jcat` without runing `sudo make install`;  
-or use `make install PREFIX=/path/to/install` for alternative installation directory (by default is `/usr/local/bin`).
-
-## Usage
-
-```
-Usage: jcat FILE [OPTION]
-
-FILE:	A json parsable notebook file (*.ipynb).
-
-OPTION:
-  -a:	Align prompt (In/Out) for copy.
-```
-
 ### Example notebook
 ![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
 
@@ -131,6 +98,39 @@ Decoding file: data/batches.meta
 =========================================================================
 ```
 </details>
+
+## Prerequisites
+
+Most systems with `g++` and `make` installed should be fine.
+
+## Build and Install
+
+Clone this repo, if you want to be able to easily uninstall jcat use `checkinstall`.
+```
+sudo apt install checkinstall
+cd jcat
+sudo checkinstall
+
+```
+Otherwise, you can use `make` to install.
+```
+cd jcat
+make
+sudo make install
+```
+Optionally, one could use `./jcat` without runing `sudo make install`;  
+or use `make install PREFIX=/path/to/install` for alternative installation directory (by default is `/usr/local/bin`).
+
+## Usage
+
+```
+Usage: jcat FILE [OPTION]
+
+FILE:	A json parsable notebook file (*.ipynb).
+
+OPTION:
+  -a:	Align prompt (In/Out) for copy.
+```
 
 ### Use jcat with grep to get rid of annoying image datas
 
