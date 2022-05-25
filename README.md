@@ -119,7 +119,7 @@ make
 sudo make install
 ```
 Optionally, one could use `./jcat` without runing `sudo make install`;  
-or use `make install PREFIX=/path/to/install` for alternative installation directory (by default is `/usr/local/bin`).
+or use `make install PREFIX=/path/to/install` for alternative installation directory (by default is `/usr/local`, which puts `jat` into `/usr/local/bin`).
 
 ## Usage
 
