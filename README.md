@@ -7,6 +7,8 @@
 
 
 * Running with `jcat examples/example-cifar10.ipynb`:
+<details>
+  <summary> Output (click to expand)</summary>
 
 ```
                 =========================================================================
@@ -45,6 +47,7 @@
                  'truck']
 =========================================================================
 ```
+</details>
 
 * Running with `jcat examples/example-cifar10.ipynb -a`:
 <details>
@@ -103,6 +106,8 @@ Decoding file: data/batches.meta
 
 Most systems with `g++` and `make` installed should be fine.
 
+**Looking for easier installation?** Checkout the [python implementation](https://github.com/ktw361/nbcat).
+
 ## Build and Install
 
 Clone this repo, if you want to be able to easily uninstall jcat use `checkinstall`.
@@ -110,7 +115,6 @@ Clone this repo, if you want to be able to easily uninstall jcat use `checkinsta
 sudo apt install checkinstall
 cd jcat
 sudo checkinstall
-
 ```
 Otherwise, you can use `make` to install.
 ```
