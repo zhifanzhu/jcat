@@ -2,52 +2,8 @@
 
 `jcat` is a self-contained command line tool for viewing jupyter notebook files in terminal. It parses notebook's underlying json content, hence it runs *without the dependency of jupyter/ipython core*.
 
-### Example notebook
-![nb](https://user-images.githubusercontent.com/23008175/83876521-91f03800-a76b-11ea-8269-28f864e1394a.png)
-
-
-* Running with `jcat examples/example-cifar10.ipynb`:
-<details>
-  <summary> Output (click to expand)</summary>
-
-```
-                =========================================================================
-   `markdown`   # CIFAR - 10 
-                ## Decode data
-                =========================================================================
-   `markdown`   Activate virtual environment
-                =========================================================================
-        In [1]: %%bash
-                source ~/kerai/bin/activate
-                =========================================================================
-   `markdown`   ### Imports
-                =========================================================================
-        In [2]: %matplotlib inline
-                from helper import get_class_names, get_train_data, get_test_data, plot_images
-                -------------------------------------------------------------------------
-    `stderr`    Using TensorFlow backend.
-
-                =========================================================================
-   `markdown`   Get class names
-                =========================================================================
-        In [3]: class_names = get_class_names()
-                class_names
-                -------------------------------------------------------------------------
-    `stdout`    Decoding file: data/batches.meta
-
-        Out[3]: ['airplane',
-                 'automobile',
-                 'bird',
-                 'cat',
-                 'deer',
-                 'dog',
-                 'frog',
-                 'horse',
-                 'ship',
-                 'truck']
-=========================================================================
-```
-</details>
+### Example notebook ([link](https://github.com/ktw361/jcat/blob/master/examples/example-cifar10.ipynb))
+![nb](https://user-images.githubusercontent.com/23008175/190875963-917e9b7a-a68c-491a-8653-72e748d8546d.png)
 
 * Running with `jcat examples/example-cifar10.ipynb -a`:
 <details>
